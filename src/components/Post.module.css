@@ -3,7 +3,7 @@
     padding: 1rem;
     background-color: #9c7eee;
     border-radius: 8px;
-    box-shadow: 0 1px 4px rgb(0, 0, 0, 2.2);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 2.2);
     animation: animate-in 2s ease-out forwards;
 }
 
