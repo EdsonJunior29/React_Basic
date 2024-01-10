@@ -10,8 +10,6 @@ function PostsList(){
 
     const [modalIsVisible , setModalIsVisible] = useState(true);
 
-    let modalContent;
-
     function changeBodyHandler(event){
         setEnteredBody(event.target.value);
     }
@@ -24,16 +22,13 @@ function PostsList(){
         setModalIsVisible(false);
     }
 
-    if(modalIsVisible) {
-        modalContent = (
-        <Modal onClose={hideModalHandler}>
-            <NewPost onBodyChange={changeBodyHandler} onAuthorChange={changeAuthorHandler}/>
-        </Modal>);
-    }
-
     return (
         <>        
-            {modalContent}
+            {modalIsVisible && (
+                <Modal onClose={hideModalHandler}>
+                    <NewPost onBodyChange={changeBodyHandler} onAuthorChange={changeAuthorHandler}/>
+                </Modal>
+            )}
            
             <ul className={classes.posts}>
                 <Post author ={enteredAuthor} body={enteredBody} />
