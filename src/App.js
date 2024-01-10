@@ -19,7 +19,10 @@ function App() {
     <>
       <MainHeader onCreatePost={showModelHandler}/>
       <main>        
-        <PostsList isPosting={modalIsVisible} onStopPosting={hideModalHandler}/>
+        <PostsList 
+          isPosting={modalIsVisible}
+          onStopPosting={hideModalHandler}
+        />
       </main>
     </>
    
