@@ -1,27 +1,15 @@
-import { useState } from 'react';
 import classes from './NewPost.module.css';
 
-function NewPost() {
-    //Trabalhando com State(Nativo do react)
-    const [enteredBody , setEnteredBody] = useState('');
-
-    function changeBodyHandler(event) {
-        //Recupera os dados que estão sendo digitados -> event.target.value
-        setEnteredBody(event.target.value);
-    }
-
+function NewPost(props) {
     return (
         <form className={classes.form}>
             <p>
                 <label htmlFor="body"> Text </label>
-                <textarea id="body" required rows={3} onChange={changeBodyHandler}></textarea>
+                <textarea id="body" required rows={3} onChange={props.onBodyChange}></textarea>
             </p>
-
-            <p style={{color : "white"}}>{ enteredBody }</p>
-
             <p>
                 <label htmlFor="name"> Your Name</label>
-                <input type="text" id="name" required />
+                <input type="text" id="name" required onChange={props.onAuthorChange}/>
             </p>
         </form>
     );
