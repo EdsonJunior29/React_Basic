@@ -7,12 +7,15 @@ import Modal from './Model';
 function PostsList({ isPosting, onStopPosting }){
     const [enteredBody , setEnteredBody] = useState('');
     const [enteredAuthor , setEnteredAuthor] = useState('');
+    const [post , setPost] = useState(false);
 
     function changeBodyHandler(event){
+        setPost(true);
         setEnteredBody(event.target.value);
     }
 
     function changeAuthorHandler(event){
+        setPost(true)
         setEnteredAuthor(event.target.value);
     }
 
@@ -24,9 +27,12 @@ function PostsList({ isPosting, onStopPosting }){
                 </Modal>
             )}
            
-            <ul className={classes.posts}>
-                <Post author ={enteredAuthor} body={enteredBody} />
-            </ul>
+           {post && (
+                <ul className={classes.posts}>
+                    <Post author ={enteredAuthor} body={enteredBody} />
+                </ul>
+           )}
+            
         </>  
     );
 }
