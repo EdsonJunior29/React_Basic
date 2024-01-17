@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Modal from '../components/Modal';
 
 import classes from '../components/NewPost.module.css';
 
-function NewPost({ onAddPost}) {
+function NewPost() {
 
     const [enteredBody , setEnteredBody] = useState('');
     const [enteredAuthor , setEnteredAuthor] = useState('');
+    const navigate = useNavigate();
 
     function changeBodyHandler(event){
         setEnteredBody(event.target.value);
@@ -23,7 +25,19 @@ function NewPost({ onAddPost}) {
             author : enteredAuthor,
             body : enteredBody,
         };
-        onAddPost(postData);
+        addPostHandler(postData);
+    }
+
+    function addPostHandler(postData) {
+        fetch('http://localhost:3001/posts', {
+            method: 'POST',
+            body: JSON.stringify(postData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        navigate('/');
     }
 
     return (
